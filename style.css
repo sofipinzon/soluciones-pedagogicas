@@ -1,0 +1,418 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    overflow-x:hidden;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#02030a;
+    color:white;
+}
+
+.webgl{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    outline:none;
+    z-index:0;
+}
+
+.overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        to right,
+        rgba(0,0,0,0.85),
+        rgba(0,0,0,0.25)
+    );
+    z-index:1;
+}
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 60px;
+    z-index:100;
+    backdrop-filter:blur(10px);
+    background:rgba(0,0,0,0.15);
+}
+
+header h1{
+    color:#ffffff;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    font-size:18px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#00ffff;
+    text-shadow:0 0 10px #00ffff;
+}
+
+.section{
+    min-height:100vh;
+    position:relative;
+    z-index:5;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:60px;
+    padding:120px 80px;
+}
+
+.content{
+    max-width:700px;
+    margin:auto;
+}
+
+.hero{
+    background:transparent;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero .content,
+.stats .content,
+.experience .content,
+.portfolio .content{
+
+    max-width:1000px;
+
+    width:100%;
+
+    margin:0 auto;
+
+    text-align:center;
+}
+
+.content h2{
+    font-size:70px;
+    margin-bottom:25px;
+    line-height:1.1;
+
+    background:linear-gradient(
+        90deg,
+        #ffffff 0%,
+        #93c5fd 25%,
+        #60a5fa 50%,
+        #38bdf8 75%,
+        #00ffff 100%
+    );
+
+    background-clip:text;
+    -webkit-background-clip:text;
+
+    color:transparent;
+    -webkit-text-fill-color:transparent;
+}
+
+.content p{
+    font-size:20px;
+    line-height:1.8;
+    color:#dbeafe;
+    margin-bottom:15px;
+}
+
+button{
+    padding:15px 35px;
+    border:none;
+    border-radius:40px;
+    background:#0ea5e9;
+    color:white;
+    cursor:pointer;
+    font-size:18px;
+    transition:0.4s;
+}
+
+button:hover{
+    transform:scale(1.05);
+
+    background:#06b6d4;
+
+    box-shadow:
+        0 0 20px #00ffff,
+        0 0 40px #00ffff;
+}
+
+.section-image{
+    width:420px;
+    max-width:40%;
+}
+
+.section-image img{
+    width:100%;
+    border-radius:20px;
+    object-fit:cover;
+
+    box-shadow:
+        0 0 20px rgba(56,189,248,.4),
+        0 0 40px rgba(0,255,255,.2);
+
+    transition:.4s;
+}
+
+.section-image img:hover{
+    transform:scale(1.05);
+
+    box-shadow:
+        0 0 30px rgba(56,189,248,.7),
+        0 0 60px rgba(0,255,255,.4);
+}
+
+.about{
+    background:rgba(2,6,23,.65);
+}
+
+.services{
+    background:rgba(15,23,42,.65);
+}
+
+.stats{
+    background:rgba(6,18,35,.65);
+}
+
+.experience{
+    background:rgba(8,47,73,.55);
+}
+
+.portfolio{
+    background:rgba(15,23,42,.65);
+}
+
+.contact{
+    background:rgba(3,7,18,.8);
+}
+
+.services-grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    margin-top:30px;
+}
+
+.service-card{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(0,255,255,.15);
+    border-radius:20px;
+    padding:25px;
+    backdrop-filter:blur(10px);
+    transition:.4s;
+}
+
+.service-card:hover{
+    transform:translateY(-10px);
+
+    box-shadow:
+        0 0 25px rgba(0,255,255,.4);
+}
+
+.service-card h3{
+    color:#38bdf8;
+    margin-bottom:15px;
+}
+
+.service-card p{
+    font-size:16px;
+}
+
+.stats-container{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:25px;
+
+    flex-wrap:wrap;
+
+    margin-top:40px;
+}
+
+.stat-card{
+    flex:1;
+    min-width:220px;
+    text-align:center;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(0,255,255,.15);
+
+    backdrop-filter:blur(10px);
+
+    transition:.4s;
+}
+
+.stat-card:hover{
+    transform:translateY(-10px);
+
+    box-shadow:
+        0 0 25px rgba(0,255,255,.4);
+}
+
+.stat-card h3{
+    font-size:60px;
+    color:#00ffff;
+    margin-bottom:10px;
+}
+
+.portfolio-grid{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:30px;
+
+    margin-top:40px;
+}
+
+.portfolio-card{
+
+    width:320px;
+
+    background:rgba(255,255,255,.05);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    transition:.4s;
+
+    border:1px solid rgba(0,255,255,.15);
+}
+
+.portfolio-card:hover{
+    transform:translateY(-10px);
+
+    box-shadow:
+        0 0 25px rgba(0,255,255,.4);
+}
+
+.portfolio-card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.portfolio-card h3{
+    text-align:center;
+    padding:20px;
+    color:#38bdf8;
+}
+
+footer{
+    position:relative;
+    z-index:10;
+
+    background:#020617;
+
+    text-align:center;
+
+    padding:60px 20px;
+
+    border-top:1px solid rgba(0,255,255,.2);
+}
+
+footer h3{
+    color:#38bdf8;
+    margin-bottom:15px;
+
+    text-shadow:
+        0 0 10px #38bdf8;
+}
+
+footer p{
+    margin:10px 0;
+    color:#cbd5e1;
+}
+
+@media(max-width:1000px){
+
+    .section{
+        flex-direction:column;
+        text-align:center;
+        padding:120px 30px;
+    }
+
+    .section-image{
+        max-width:90%;
+    }
+
+    .content h2{
+        font-size:48px;
+    }
+
+    .content p{
+        font-size:18px;
+    }
+
+    .stats-container{
+        justify-content:center;
+    }
+}
+
+@media(max-width:768px){
+
+    header{
+        padding:20px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    header h1{
+        font-size:22px;
+    }
+
+    .content h2{
+        font-size:38px;
+    }
+
+    .section{
+        padding:100px 20px;
+    }
+
+    .stat-card{
+        min-width:100%;
+    }
+
+    .portfolio-card{
+        width:100%;
+        max-width:350px;
+    }
+}
